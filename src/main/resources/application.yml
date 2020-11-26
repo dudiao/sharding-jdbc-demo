@@ -1,0 +1,50 @@
+
+
+spring:
+  datasource:
+    # 动态数据源配置
+    dynamic:
+      datasource:
+        master:
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/no_sharding?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&useTimezone=true&rewriteBatchedStatements=true
+          username: root
+          password: 123456
+      # 指定默认数据源名称
+      primary: master
+  # 分表配置
+  shardingsphere:
+    datasource:
+      # 多个用英文逗号隔开
+      names: sharding-order-system
+      sharding-order-system:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/order_sharding?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&useTimezone=true
+        username: root
+        password: 123456
+    props:
+      # 日志显示SQL
+      sql.show: true
+    sharding:
+      tables:
+        # 订单表 分表：2
+        user_order:
+          # 真实表 user_order_0
+          actualDataNodes: sharding-order-system.user_order_$->{0..1}
+          # 分库策略
+          databaseStrategy:
+            none:
+          # 分表策略
+          tableStrategy:
+            inline:
+              shardingColumn: user_id
+              # 分片算法行表达式，需符合groovy语法 '& Integer.MAX_VALUE' 位运算使hash值为正数
+              algorithmExpression: user_order_$->{(user_id.hashCode() & Integer.MAX_VALUE) % 2}
+logging:
+  level:
+    com:
+      github:
+        dudiao:
+          sharding: debug
