@@ -24,8 +24,12 @@ class ShardingJdbcDemoApplicationTests {
 
     @Test
     void shardingJdbcTest() {
+        // 使用默认数据源（即不分表的数据源）
         User dudiao = userService.getOne(Wrappers.<User>lambdaQuery().eq(User::getName, "读钓"));
+
+        // 使用@DS，切换到分表数据源
         List<Order> orderList = orderService.getOrderByUser(dudiao.getId());
+
         log.info("==> \n用户：{} \n订单：{}", dudiao, orderList);
         Assert.isTrue(orderList.size() == 1, "订单数不正确！");
     }
