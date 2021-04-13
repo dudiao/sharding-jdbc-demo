@@ -1,5 +1,3 @@
-
-
 spring:
   datasource:
     # 动态数据源配置
@@ -20,6 +18,12 @@ spring:
       names: sharding-order-system
       sharding-order-system:
         type: com.alibaba.druid.pool.DruidDataSource
+        # 连接池初始化连接数
+        initialSize: 5
+        # 连接池最小连接数
+        minIdle: 5
+        # 连接池最大连接数
+        maxActive: 20
         driverClassName: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://127.0.0.1:3306/order_sharding?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&useTimezone=true
         username: root
@@ -27,6 +31,8 @@ spring:
     props:
       # 日志显示SQL
       sql.show: true
+      # 设置任务处理线程池的大小，执行SQL时，会按照该数字 多线程执行
+      max.connections.size.per.query: 8
     sharding:
       tables:
         # 订单表 分表：8
