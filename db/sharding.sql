@@ -60,4 +60,76 @@ CREATE TABLE `user_order_1`  (
 -- ----------------------------
 INSERT INTO `user_order_1` VALUES (1002, 1, 200.000, '2020-11-27 00:13:08');
 
+-- ----------------------------
+-- Table structure for user_order_2
+-- ----------------------------
+DROP TABLE IF EXISTS `user_order_2`;
+CREATE TABLE `user_order_2`  (
+    `order_key` bigint(20) NOT NULL COMMENT '订单号',
+    `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
+    `amount` float(9, 3) NULL DEFAULT NULL COMMENT '订单金额',
+    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`order_key`) USING BTREE
+    ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for user_order_3
+-- ----------------------------
+DROP TABLE IF EXISTS `user_order_3`;
+CREATE TABLE `user_order_3`  (
+    `order_key` bigint(20) NOT NULL COMMENT '订单号',
+    `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
+    `amount` float(9, 3) NULL DEFAULT NULL COMMENT '订单金额',
+    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`order_key`) USING BTREE
+    ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for user_order_4
+-- ----------------------------
+DROP TABLE IF EXISTS `user_order_4`;
+CREATE TABLE `user_order_4`  (
+    `order_key` bigint(20) NOT NULL COMMENT '订单号',
+    `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
+    `amount` float(9, 3) NULL DEFAULT NULL COMMENT '订单金额',
+    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`order_key`) USING BTREE
+    ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for user_order_5
+-- ----------------------------
+DROP TABLE IF EXISTS `user_order_5`;
+CREATE TABLE `user_order_5`  (
+    `order_key` bigint(20) NOT NULL COMMENT '订单号',
+    `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
+    `amount` float(9, 3) NULL DEFAULT NULL COMMENT '订单金额',
+    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`order_key`) USING BTREE
+    ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for user_order_6
+-- ----------------------------
+DROP TABLE IF EXISTS `user_order_6`;
+CREATE TABLE `user_order_6`  (
+    `order_key` bigint(20) NOT NULL COMMENT '订单号',
+    `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
+    `amount` float(9, 3) NULL DEFAULT NULL COMMENT '订单金额',
+    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`order_key`) USING BTREE
+    ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for user_order_7
+-- ----------------------------
+DROP TABLE IF EXISTS `user_order_7`;
+CREATE TABLE `user_order_7`  (
+    `order_key` bigint(20) NOT NULL COMMENT '订单号',
+    `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
+    `amount` float(9, 3) NULL DEFAULT NULL COMMENT '订单金额',
+    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`order_key`) USING BTREE
+    ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
 SET FOREIGN_KEY_CHECKS = 1;

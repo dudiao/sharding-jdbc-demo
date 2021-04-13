@@ -29,10 +29,10 @@ spring:
       sql.show: true
     sharding:
       tables:
-        # 订单表 分表：2
+        # 订单表 分表：8
         user_order:
           # 真实表 user_order_0
-          actualDataNodes: sharding-order-system.user_order_$->{0..1}
+          actualDataNodes: sharding-order-system.user_order_$->{0..7}
           # 分库策略
           databaseStrategy:
             none:
@@ -41,7 +41,7 @@ spring:
             inline:
               shardingColumn: user_id
               # 分片算法行表达式，需符合groovy语法 '& Integer.MAX_VALUE' 位运算使hash值为正数
-              algorithmExpression: user_order_$->{(user_id.hashCode() & Integer.MAX_VALUE) % 2}
+              algorithmExpression: user_order_$->{(user_id.hashCode() & Integer.MAX_VALUE) % 8}
 logging:
   level:
     com:

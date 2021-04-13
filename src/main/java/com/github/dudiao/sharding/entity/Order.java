@@ -19,9 +19,9 @@ public class Order {
     private Long orderKey;
 
     @TableField("user_id")
-    private String userId;
+    private Long userId;
 
-    private float amount;
+    private double amount;
 
     private Date createTime;
 }
