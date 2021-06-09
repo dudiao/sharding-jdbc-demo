@@ -1,0 +1,36 @@
+spring:
+  # 分表配置
+  shardingsphere:
+    datasource:
+      # 多个用英文逗号隔开
+      names: sharding-order-system
+      sharding-order-system:
+        type: com.alibaba.druid.pool.DruidDataSource
+        # 连接池初始化连接数
+        initialSize: 5
+        # 连接池最小连接数
+        minIdle: 5
+        # 连接池最大连接数
+        maxActive: 20
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/order_sharding?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&useTimezone=true
+        username: root
+        password: Dd#2021
+    props:
+      # 设置任务处理线程池的大小，执行SQL时，会按照该数字 多线程执行
+      max.connections.size.per.query: 2
+    sharding:
+      tables:
+        # 订单表 分表：2
+        user_order:
+          # 真实表 user_order_0
+          actualDataNodes: sharding-order-system.user_order_$->{0..1}
+          # 分库策略
+          databaseStrategy:
+            none:
+          # 分表策略
+          tableStrategy:
+            inline:
+              shardingColumn: user_id
+              # 分片算法行表达式，需符合groovy语法 '& Integer.MAX_VALUE' 位运算使hash值为正数
+              algorithmExpression: user_order_$->{(user_id.hashCode() & Integer.MAX_VALUE) % 2}

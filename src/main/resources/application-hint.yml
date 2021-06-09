@@ -1,0 +1,34 @@
+spring:
+  # 分表配置
+  shardingsphere:
+    datasource:
+      # 多个用英文逗号隔开
+      names: sharding-order-system
+      sharding-order-system:
+        type: com.alibaba.druid.pool.DruidDataSource
+        # 连接池初始化连接数
+        initialSize: 5
+        # 连接池最小连接数
+        minIdle: 5
+        # 连接池最大连接数
+        maxActive: 20
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/order_sharding?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&useTimezone=true
+        username: root
+        password: Dd#2021
+    props:
+      # 日志显示SQL
+      sql.show: true
+    sharding:
+      tables:
+        # 订单表 分表：8
+        user_order:
+          # 真实表 user_order_0
+          actualDataNodes: sharding-order-system.user_order_$->{0..7}
+          # 分库策略
+          databaseStrategy:
+            none:
+          # 分表策略
+          tableStrategy:
+            hint:
+              algorithmClassName: com.github.dudiao.sharding.config.MyHintShardingAlgorithm

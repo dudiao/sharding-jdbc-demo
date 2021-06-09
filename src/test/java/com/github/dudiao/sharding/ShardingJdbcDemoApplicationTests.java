@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Locale;
 
 @Slf4j
-@SpringBootTest(properties = "spring.profiles.active=dev")
+@SpringBootTest(properties = "spring.profiles.active=sharding")
 class ShardingJdbcDemoApplicationTests {
 
     @Autowired

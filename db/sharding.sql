@@ -42,6 +42,7 @@ CREATE TABLE `user_order_0`  (
 -- Records of user_order_0
 -- ----------------------------
 INSERT INTO `user_order_0` VALUES (1001, 2, 100.000, '2020-11-27 00:11:24');
+INSERT INTO `user_order_0` VALUES (1003, 1, 150.000, '2021-6-9 00:14:24');
 
 -- ----------------------------
 -- Table structure for user_order_1

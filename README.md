@@ -18,9 +18,9 @@
 ```
 
 ## 2. 修改数据库信息
-将项目中resources目录下的application.yml文件复制一份为application-dev.yml，在application-dev.yml中，将数据源信息修改为自己的。
+在项目中resources目录下的`application.yml`、`application-sharding.yml`和`application-hint.yml`，将数据源信息修改为自己的。
 
 ## 3. 运行测试类
-测试类中，激活了dev的配置文件，就是使用第2步添加的application-dev.yml
+测试类中，分别激活了sharding和hint的配置文件。
 
 整个示例比较简单：用户的订单表进行了分表，先根据用户名称查询用户id，再去查询该用户的订单。麻雀虽小五脏俱全。
